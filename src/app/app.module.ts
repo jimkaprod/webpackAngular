@@ -1,22 +1,30 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { TestBed } from '@angular/core/testing';
+import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
-/*
-describe('App', () => {
-  beforeEach(() => {
-    TestBed.configureTestingModule({ declarations: [AppComponent]});
-  });
-  it ('should work', () => {
-    let fixture = TestBed.createComponent(AppComponent);
-    expect(fixture.componentInstance instanceof AppComponent).toBe(true, 'should create AppComponent');
-  });
-});
-*/
+import { PdfViewerComponent } from './pdf-viewer/pdf-viewer.component';
+import { HomeComponent } from './home/home.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+
+const appRoutes: Routes = [
+  { path: 'pdfViewer', component: PdfViewerComponent },
+  { path: '', component: HomeComponent },
+  { path: '**', component: PageNotFoundComponent }
+];
+
+
 
 @NgModule({
-  imports:      [ BrowserModule ],
-  declarations: [ AppComponent ],
+  imports:      [ 
+    BrowserModule,
+    RouterModule.forRoot(appRoutes)
+ ],
+  declarations: [ 
+    AppComponent,
+    PdfViewerComponent,
+    HomeComponent,
+    PageNotFoundComponent
+ ],
   bootstrap:    [ AppComponent ]
 })
 
