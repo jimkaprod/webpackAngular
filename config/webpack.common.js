@@ -13,6 +13,7 @@ module.exports = {
   },
 
   resolve: {
+    root: [path.resolve(__dirname, 'src'), path.resolve(__dirname, 'node_modules')],
     extensions: ['', '.ts', '.js']
   },
 
@@ -39,6 +40,10 @@ module.exports = {
         test: /\.css$/,
         include: helpers.root('src', 'app'),
         loader: 'raw'
+      },
+      {
+        test: /vendor\/.+\.(jsx|js)$/,
+        loader: 'imports?jQuery=jquery,$=jquery,this=>window'
       }
     ]
   },
@@ -51,8 +56,9 @@ module.exports = {
       template: 'src/index.html'
     }),
     new webpack.ProvidePlugin({
-      $: "jquery",
-      jQuery: "jquery"
-    })    
+    $: "jquery",
+    jQuery: "jquery",
+    "window.jQuery": "jquery"
+    })
   ]
 };
