@@ -196,7 +196,8 @@ turnMethods = {
       bind(mouseEvents.up, data.eventHandlers.touchEnd);
 
     // Set the initial page
-
+console.log('1111111111111');
+console.log(options)
     this.turn('page', options.page);
 
     // This flipbook is ready
