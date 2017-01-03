@@ -6,17 +6,17 @@ var $ = jQuery;
 window["$"] = $;
 window["jQuery"] = $;
 
-require("script-loader!../shared/turnjs/hash.js");
-require("script-loader!../shared/turnjs/turn.js");
-require("script-loader!../shared/turnjs/zoom.js");
-require("script-loader!../shared/turnjs/magazine.js");
+// require("script-loader!../shared/turnjs/hash.js");
+// require("script-loader!../shared/turnjs/turn.js");
+// require("script-loader!../shared/turnjs/zoom.js");
+// require("script-loader!../shared/turnjs/magazine.js");
 
-/*
+
   require('../shared/turnjs/hash.js');
   require('../shared/turnjs/turn.js');
   require('../shared/turnjs/zoom.min.js');
   require('../shared/turnjs/magazine.js');
-*/
+
 //require('../shared/turnjs/turn-full.js');
 
 
@@ -33,7 +33,7 @@ export class PdfViewerComponent implements AfterViewInit {
 
   ngAfterViewInit() {
     var winWidth = window.innerWidth;
-    var winHeight = window.innerHeight;      
+    var winHeight = window.innerHeight;
 
     $('#canvas').fadeIn(1000);
 
@@ -91,7 +91,7 @@ export class PdfViewerComponent implements AfterViewInit {
           turned: function(event, page, view) {
             //disableControls(page);
             $(this).turn('center');
-            if (page==1) { 
+            if (page==1) {
               $(this).turn('peel', 'br');
             }
           },
@@ -99,17 +99,17 @@ export class PdfViewerComponent implements AfterViewInit {
             // Add pages that aren't in the magazine
             for (var i = 0; i < pages.length; i++)
               addPage(pages[i], $(this));
-          } 
-        }        
+          }
+        }
     });
 
 
     // Zoom.js
     $('.magazine-viewport').zoom({
       flipbook: $('.magazine'),
-      max: function() { 
+      max: function() {
         return largeMagazineWidth()/$('.magazine').width();
-      }, 
+      },
       when: {
         swipeLeft: function() {
           $(this).zoom('flipbook').turn('next');
@@ -179,13 +179,13 @@ export class PdfViewerComponent implements AfterViewInit {
           e.preventDefault();
         break;
         case esc:
-          $('.magazine-viewport').zoom('zoomOut');  
+          $('.magazine-viewport').zoom('zoomOut');
           e.preventDefault();
         break;
       }
     });
 
-    // URIs - Format #/page/1 
+    // URIs - Format #/page/1
 
     Hash.on('^page\/([0-9]*)$', {
       yep: function(path, parts) {
@@ -208,7 +208,7 @@ export class PdfViewerComponent implements AfterViewInit {
       resizeViewport();
     });
 
-    // URIs - Format #/page/1 
+    // URIs - Format #/page/1
 
     Hash.on('^page\/([0-9]*)$', {
       yep: function(path, parts) {
@@ -303,14 +303,14 @@ export class PdfViewerComponent implements AfterViewInit {
     $('.magazine').addClass('animated');
 
     // Zoom icon
-    $('.zoom-icon').bind('mouseover', function() { 
+    $('.zoom-icon').bind('mouseover', function() {
       if ($(this).hasClass('zoom-icon-in'))
         $(this).addClass('zoom-icon-in-hover');
-      
+
       if ($(this).hasClass('zoom-icon-out'))
         $(this).addClass('zoom-icon-out-hover');
-   
-    }).bind('mouseout', function() { 
+
+    }).bind('mouseout', function() {
       if ($(this).hasClass('zoom-icon-in'))
         $(this).removeClass('zoom-icon-in-hover');
 
@@ -321,11 +321,11 @@ export class PdfViewerComponent implements AfterViewInit {
 
       if ($(this).hasClass('zoom-icon-in'))
         $('.magazine-viewport').zoom('zoomIn');
-      else if ($(this).hasClass('zoom-icon-out'))  
+      else if ($(this).hasClass('zoom-icon-out'))
         $('.magazine-viewport').zoom('zoomOut');
    });
 
-   $('#canvas').show();  
+   $('#canvas').show();
   }
 }
 
