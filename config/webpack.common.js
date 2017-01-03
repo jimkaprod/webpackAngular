@@ -5,6 +5,18 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var helpers = require('./helpers');
 var nodeModulesDir = path.resolve(__dirname, '../../node_modules');
 
+/*
+,
+    'turnjs': [
+      'jquery',
+      './src/app/shared/turnjs/hash.js',
+      './src/app/shared/turnjs/turn.js',
+      './src/app/shared/turnjs/zoom.js',
+      './src/app/shared/turnjs/magazine.js'
+    ]
+
+
+ */
 module.exports = {
   entry: {
     'polyfills': './src/polyfills.ts',

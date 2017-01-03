@@ -146,7 +146,7 @@ turnMethods = {
       start: $.proxy(turnMethods._eventStart, this)
     };
 
-
+console.log('TOTAL PAGE >>>>>>>>>>>>>>>>>>>>>>>>>>>>>',data.totalPages, options.pages);
 
     // Add event listeners
 
@@ -196,7 +196,6 @@ turnMethods = {
       bind(mouseEvents.up, data.eventHandlers.touchEnd);
 
     // Set the initial page
-console.log('1111111111111');
 console.log(options)
     this.turn('page', options.page);
 
@@ -210,7 +209,7 @@ console.log(options)
   // Adds a page from external data
 
   addPage: function(element, page) {
-
+console.log('ICIIIIIIIII')
     var currentPage,
       className,
       incPages = false,

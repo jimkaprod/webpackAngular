@@ -1,9 +1,9 @@
 /*
  * Magazine sample
 */
-
+console.log('MAGAZINE')
 function addPage(page, book) {
-
+console.log('LAAAAAAAAAAA')
 	var id, pages = book.turn('pages');
 
 	// Create a new element for this page
@@ -17,6 +17,7 @@ function addPage(page, book) {
 		element.html('<div class="gradient"></div><div class="loader"></div>');
 
 		// Load the page
+		console.log(page,element)
 		loadPage(page, element);
 	}
 
@@ -48,9 +49,9 @@ function loadPage(page, pageElement) {
 
 	// Load the page
 
-	img.attr('src', 'pages/' +  page + '.jpg');
+	img.attr('src', 'src/app/pdf-viewer/pages/' +  page + '.jpg');
 
-	loadRegions(page, pageElement);
+	//loadRegions(page, pageElement);
 
 }
 
@@ -78,9 +79,9 @@ function zoomTo(event) {
 
 function loadRegions(page, element) {
 
-	$.getJSON('pages/'+page+'-regions.json').
+	$.getJSON('src/app/pdf-viewer/pages/'+page+'-regions.json').
 		done(function(data) {
-
+console.log(data);
 			$.each(data, function(key, region) {
 				addRegion(region, element);
 			});
@@ -179,7 +180,7 @@ function loadLargePage(page, pageElement) {
 
 	// Loadnew page
 	
-	img.attr('src', 'pages/' +  page + '-large.jpg');
+	img.attr('src', 'src/app/pdf-viewer/pages/' +  page + '-large.jpg');
 }
 
 // Load small page
@@ -193,7 +194,7 @@ function loadSmallPage(page, pageElement) {
 	img.unbind('load');
 	// Loadnew page
 
-	img.attr('src', 'pages/' +  page + '.jpg');
+	img.attr('src', 'src/app/pdf-viewer/pages/' +  page + '.jpg');
 }
 
 // http://code.google.com/p/chromium/issues/detail?id=128488
@@ -205,6 +206,7 @@ function isChrome() {
 }
 
 function disableControls(page) {
+	console.log(page);
 		if (page==1)
 			$('.previous-button').hide();
 		else
